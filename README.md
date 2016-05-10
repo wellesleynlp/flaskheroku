@@ -1,9 +1,44 @@
-# Flask Demo
+# Deploying Flask app on Heroku
 
-Requires the [flask Python library](http://flask.pocoo.org).
+See the [basic Flask demo](https://github.com/wellesleynlp/flaskdemo) to get started on building a Flask app.
+ 
+## Requirements
 
-Execute `main.py` and navigate to the displayed local address (usually 127.0.0.1:5000).
+1. Flask (`pip install flask`)
+2. gunicorn (http://gunicorn.org or `brew install gunicorn` if you have `brew`)
+3. heroku (https://devcenter.heroku.com/articles/heroku-command or `brew install heroku`)
 
-`templates/` contains HTML template files in the [Jinja2 language](http://jinja.pocoo.org/docs/dev/).
-Images and css go into `static/` by convention.
+## Code Modification
 
+In contrast to the Flask demo, you'll need to separate out your application into an "app" module -- just move all your code into a directory named `app`, with an `__init__.py` file.
+Create a new Python file (`main.py` in this example) outside the `app` directory that simply runs the app.
+
+Note that any data files that your application reads should remain in the top level (not the `app` directory).
+
+## Gunicorn
+
+The built-in Flask server isn't powerful enough for deployment. 
+Once you've installed `gunicorn`, run 
+
+    gunicorn app:app
+
+This should serve up your app just as before. 
+Test that everything works before deploying.
+
+## Deploy publicly on Heroku
+
+1. Create an account on https://signup.heroku.com
+1. Type `heroku login` from the top level of your code, and sign in with your account credentials
+1. Create new files named `requirements.txt` containing the required programs for your app, and `Procfile`, like the examples here.
+1. Create a new application on Heroku with `heroku apps:create yourappname`. 
+1. Add, commit, and push your code to Heroku by typing `git push heroku master`
+
+If all goes well, this will automatically build your application on the Heroku servers, and deploy it on the displayed URL. 
+For example, this demo is on https://tranquil-ocean-84646.herokuapp.com/
+(I didn't choose a name on the creation step, so it assigned me a random one.)
+ 
+Updating your code is just a matter of committing your changes as you would for any git repository.
+
+Note that if your code was already versioned on GitHub, creating the heroku application changed the remote "origin" to a Heroku repository. You will have to add another remote if you'd like to continue to version your code on GitHub like so:
+
+    git remote add alt https://github.com/etc
