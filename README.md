@@ -41,7 +41,7 @@ For example, this demo is on https://tranquil-ocean-84646.herokuapp.com/
  
 Updating your code is just a matter of committing your changes as you would for any git repository.
 
-Note that if your code was already versioned on GitHub, creating the heroku application changed the remote "origin" to a Heroku repository. You will have to add another remote if you'd like to continue to version your code on GitHub, like so:
+Note that if your code was already versioned on GitHub, creating the heroku application added a new remote named "heroku" that points to your Heroku repository. So now you have two remotes for the same repository -- the second one is "origin", that presumably points to GitHub. 
 
-    git remote add alt https://github.com/etc
+You can selectively push changes either by specifying the remote (`git push heroku master` or `git push origin master`). When no name is specified, it defaults to "origin". Whatever is pushed to heroku is automatically built.
 
