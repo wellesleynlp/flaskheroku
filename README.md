@@ -1,4 +1,6 @@
-# Deploying Flask app on Heroku
+# Deploying Flask apps on Heroku
+
+Heroku is a cloud-based platform for deploying web applications.
 
 See the [basic Flask demo](https://github.com/wellesleynlp/flaskdemo) to get started on building a Flask app.
  
@@ -10,7 +12,7 @@ See the [basic Flask demo](https://github.com/wellesleynlp/flaskdemo) to get sta
 
 ## Code Modification
 
-In contrast to the Flask demo, you'll need to separate out your application into an "app" module -- just move all your code into a directory named `app`, with an `__init__.py` file.
+In contrast to the basic Flask demo, you'll need to separate out your application into an "app" module -- just move all your code into a directory named `app`, with an `__init__.py` file.
 Create a new Python file (`main.py` in this example) outside the `app` directory that simply runs the app.
 
 Note that any data files that your application reads should remain in the top level (not the `app` directory).
@@ -39,6 +41,7 @@ For example, this demo is on https://tranquil-ocean-84646.herokuapp.com/
  
 Updating your code is just a matter of committing your changes as you would for any git repository.
 
-Note that if your code was already versioned on GitHub, creating the heroku application changed the remote "origin" to a Heroku repository. You will have to add another remote if you'd like to continue to version your code on GitHub like so:
+Note that if your code was already versioned on GitHub, creating the heroku application changed the remote "origin" to a Heroku repository. You will have to add another remote if you'd like to continue to version your code on GitHub, like so:
 
     git remote add alt https://github.com/etc
+
